@@ -1,5 +1,7 @@
 __author__ = "Jacob Dueholm"
 
+import time
+import random
 import requests
 ######################################################### 
 # Github  :  https://github.com/kennethreitz/requests   #
@@ -41,6 +43,13 @@ def __trim(untrimmed):
     untrimmed = untrimmed.replace(" ", "")
     return untrimmed.rstrip('\n')
 
+def __randomSleep(minutes):
+    secondsToSleep = random.randint(0, minutes * 60)
+    print("going to sleep for " + str(secondsToSleep) + " seconds.")
+    time.sleep(secondsToSleep)
+
 if __name__ == "__main__":
+    __randomSleep(2)
     login()
+    __randomSleep(2)
     checkoutJobProposals()
