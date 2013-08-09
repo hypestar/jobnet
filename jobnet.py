@@ -27,6 +27,11 @@ def checkoutJobProposals():
     checkoutJobsURL = "https://job.jobnet.dk/CV/Jobseeker/mypage.aspx/tjekjob"
     checkoutJobsPage = session.get(checkoutJobsURL);
     print(checkoutJobsPage.text)
+
+def logout():
+    logoutURL = "https://job.jobnet.dk/CV/logout.aspx"
+    logoutPage = session.get(logoutURL)
+    print(logoutPage.text)
     
 def __getCredentialsFromFile():
     f = open('.credentials')
@@ -53,3 +58,4 @@ if __name__ == "__main__":
     login()
     __randomSleep(2)
     checkoutJobProposals()
+    logout()
