@@ -21,6 +21,11 @@ def login():
     loginResponse = session.post(loginActionURL, credentials)
     print(loginResponse.text)
 
+def checkoutJobProposals():
+    checkoutJobsURL = "https://job.jobnet.dk/CV/Jobseeker/mypage.aspx/tjekjob"
+    checkoutJobsPage = session.get(checkoutJobsURL);
+    print(checkoutJobsPage.text)
+    
 def __getCredentialsFromFile():
     f = open('.credentials')
     lines = f.readlines()
@@ -38,3 +43,4 @@ def __trim(untrimmed):
 
 if __name__ == "__main__":
     login()
+    checkoutJobProposals()
