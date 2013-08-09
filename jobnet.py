@@ -1,5 +1,26 @@
 __author__ = "Jacob Dueholm"
 
+import requests
+######################################################### 
+# Github  :  https://github.com/kennethreitz/requests   #
+# Docs    : http://docs.python-requests.org/en/latest/  #
+# Install : pythin-pip install requests                 #
+#########################################################
+
+session = requests.Session()
+
+def login():
+    loginPageURL = "https://job.jobnet.dk/CV/Frontpage.aspx/Home"
+    loginActionURL = "https://job.jobnet.dk/CV/Frontpage.aspx/Login"
+    credentials = __getCredentialsFromFile()
+    
+    #Give me some cookies :)
+    loginPage = session.get(loginPageURL)
+
+    #Login
+    loginResponse = session.post(loginActionURL, credentials)
+    print(loginResponse.text)
+
 def __getCredentialsFromFile():
     f = open('.credentials')
     lines = f.readlines()
@@ -16,4 +37,4 @@ def __trim(untrimmed):
     return untrimmed.rstrip('\n')
 
 if __name__ == "__main__":
-    __getCredentialsFromFile()
+    login()
